@@ -14,7 +14,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 // reactstrap components
 import {
@@ -38,6 +38,16 @@ import {
 } from "reactstrap";
 
 const Register = () => {
+  const registrationMode = {
+    admin: "admin",
+    customer: "customer",
+    tenant: "tenant",
+  };
+
+  const [registrationModeState, setRegistrationModeState] = useState(
+    registrationMode.admin
+  );
+
   const [state, setState] = React.useState({});
   React.useEffect(() => {
     document.body.classList.toggle("register-page");
@@ -45,57 +55,82 @@ const Register = () => {
       document.body.classList.toggle("register-page");
     };
   });
+
+  function getRegistrationModeLabel(registrationModeState) {
+    if (registrationModeState === registrationMode.admin) {
+      return "as admin";
+    }
+    if (registrationModeState === registrationMode.customer) {
+      return "as customer";
+    }
+    if (registrationModeState === registrationMode.tenant) {
+      return "as tenant";
+    }
+  }
+
   return (
     <>
       <div className="content">
         <Container>
           <Row>
-            <Col className="ml-auto" md="5">
-              <div className="info-area info-horizontal mt-5">
-                <div className="icon icon-warning">
-                  <i className="tim-icons icon-wifi" />
-                </div>
-                <div className="description">
-                  <h3 className="info-title">Marketing</h3>
-                  <p className="description">
-                    We've created the marketing campaign of the website. It was
-                    a very interesting collaboration.
-                  </p>
-                </div>
-              </div>
-              <div className="info-area info-horizontal">
-                <div className="icon icon-primary">
-                  <i className="tim-icons icon-triangle-right-17" />
-                </div>
-                <div className="description">
-                  <h3 className="info-title">Fully Coded in HTML5</h3>
-                  <p className="description">
-                    We've developed the website with HTML5 and CSS3. The client
-                    has access to the code using GitHub.
-                  </p>
-                </div>
-              </div>
-              <div className="info-area info-horizontal">
-                <div className="icon icon-info">
-                  <i className="tim-icons icon-trophy" />
-                </div>
-                <div className="description">
-                  <h3 className="info-title">Built Audience</h3>
-                  <p className="description">
-                    There is also a Fully Customizable CMS Admin Dashboard for
-                    this product.
-                  </p>
-                </div>
-              </div>
+            <Col className="ml-auto" md="3">
+              <Button
+                className="btn-round"
+                color="primary"
+                href="#pablo"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setRegistrationModeState((prev) => {
+                    console.log({ prev });
+                    return registrationMode.admin;
+                  });
+                }}
+                size="lg"
+              >
+                Register as Admin
+              </Button>
+              <Button
+                className="btn-round"
+                color="primary"
+                href="#pablo"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setRegistrationModeState((prev) => registrationMode.customer);
+                }}
+                size="lg"
+              >
+                Register as Customer
+              </Button>
+              <Button
+                className="btn-round"
+                color="primary"
+                href="#pablo"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setRegistrationModeState((prev) => registrationMode.tenant);
+                }}
+                size="lg"
+              >
+                Register as Tenant
+              </Button>
             </Col>
-            <Col className="mr-auto" md="7">
+            <Col className="mr-auto" md="9">
               <Card className="card-register card-white">
                 <CardHeader>
-                  <CardImg
+                  {/* <CardImg
                     alt="..."
                     src={require("assets/img/card-primary.png")}
-                  />
-                  <CardTitle tag="h4">Register</CardTitle>
+                  /> */}
+                  <CardTitle
+                    style={{ color: "grey" }}
+                    tag="h4"
+                    className="pl-4"
+                  >
+                    Register
+                  </CardTitle>
+                  <h2 style={{ color: "grey" }} className="pl-4">
+                    {getRegistrationModeLabel(registrationModeState)}
+                  </h2>
                 </CardHeader>
                 <CardBody>
                   <Form className="form">
