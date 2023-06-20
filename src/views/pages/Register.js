@@ -14,7 +14,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import classnames from "classnames";
 // reactstrap components
 import {
@@ -36,6 +36,8 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faUser } from "@fortawesome/fontawesome-free-regular";
 
 const Register = () => {
   const registrationMode = {
@@ -49,6 +51,18 @@ const Register = () => {
   );
 
   const [state, setState] = React.useState({});
+
+  const emailRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const countryRef = useRef();
+  const stateRef = useRef();
+  const cityRef = useRef();
+  const zipRef = useRef();
+  const addressRef = useRef();
+  const contactNumberRef = useRef();
+  const passwordRef = useRef();
+
   React.useEffect(() => {
     document.body.classList.toggle("register-page");
     return function cleanup() {
@@ -74,6 +88,31 @@ const Register = () => {
         <Container>
           <Row>
             <Col className="ml-auto" md="3">
+              {/* todo remove button start*/}
+              <Button
+                className="btn-round"
+                color="primary"
+                href="#pablo"
+                onClick={(e) => {
+                  e.preventDefault();
+                  emailRef.current.value = "akash.punagin@gmail.com";
+                  firstNameRef.current.value = "admin";
+                  lastNameRef.current.value = "admin";
+                  countryRef.current.value = "India";
+                  stateRef.current.value = "Karnataka";
+                  cityRef.current.value = "Bangalore";
+                  zipRef.current.value = "560064";
+                  addressRef.current.value =
+                    "RWF West Colony, Yelahanka New Town";
+                  contactNumberRef.current.value = "8042802345";
+                  passwordRef.current.value = "password";
+                }}
+                size="lg"
+              >
+                Auto fill
+              </Button>
+              {/* todo remove button end*/}
+
               <Button
                 className="btn-round"
                 color="primary"
@@ -136,19 +175,46 @@ const Register = () => {
                   <Form className="form">
                     <InputGroup
                       className={classnames({
-                        "input-group-focus": state.nameFocus,
+                        "input-group-focus": state.firstNameFocus,
                       })}
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="tim-icons icon-single-02" />
+                          <FontAwesomeIcon icon={faUser} />
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        placeholder="Full Name"
+                        innerRef={firstNameRef}
+                        placeholder="First Name"
                         type="text"
-                        onFocus={(e) => setState({ ...state, nameFocus: true })}
-                        onBlur={(e) => setState({ ...state, nameFocus: false })}
+                        onFocus={(e) =>
+                          setState({ ...state, firstNameFocus: true })
+                        }
+                        onBlur={(e) =>
+                          setState({ ...state, firstNameFocus: false })
+                        }
+                      />
+                    </InputGroup>
+                    <InputGroup
+                      className={classnames({
+                        "input-group-focus": state.lastNameFocus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <FontAwesomeIcon icon={faUser} />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        innerRef={lastNameRef}
+                        placeholder="Last Name"
+                        type="text"
+                        onFocus={(e) =>
+                          setState({ ...state, lastNameFocus: true })
+                        }
+                        onBlur={(e) =>
+                          setState({ ...state, lastNameFocus: false })
+                        }
                       />
                     </InputGroup>
                     <InputGroup
@@ -158,10 +224,11 @@ const Register = () => {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="tim-icons icon-email-85" />
+                          <FontAwesomeIcon icon={faUser} />
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
+                        innerRef={emailRef}
                         placeholder="Email"
                         type="text"
                         onFocus={(e) =>
@@ -169,6 +236,130 @@ const Register = () => {
                         }
                         onBlur={(e) =>
                           setState({ ...state, emailFocus: false })
+                        }
+                      />
+                    </InputGroup>
+                    <InputGroup
+                      className={classnames({
+                        "input-group-focus": state.countryFocus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="tim-icons icon-single-02" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        innerRef={countryRef}
+                        placeholder="Country"
+                        type="text"
+                        onFocus={(e) =>
+                          setState({ ...state, countryFocus: true })
+                        }
+                        onBlur={(e) =>
+                          setState({ ...state, countryFocus: false })
+                        }
+                      />
+                    </InputGroup>
+                    <InputGroup
+                      className={classnames({
+                        "input-group-focus": state.stateFocus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="tim-icons icon-single-02" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        innerRef={stateRef}
+                        placeholder="State"
+                        type="text"
+                        onFocus={(e) =>
+                          setState({ ...state, stateFocus: true })
+                        }
+                        onBlur={(e) =>
+                          setState({ ...state, stateFocus: false })
+                        }
+                      />
+                    </InputGroup>
+                    <InputGroup
+                      className={classnames({
+                        "input-group-focus": state.cityFocus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="tim-icons icon-single-02" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        innerRef={cityRef}
+                        placeholder="City"
+                        type="text"
+                        onFocus={(e) => setState({ ...state, cityFocus: true })}
+                        onBlur={(e) => setState({ ...state, cityFocus: false })}
+                      />
+                    </InputGroup>
+                    <InputGroup
+                      className={classnames({
+                        "input-group-focus": state.addressFocus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="tim-icons icon-single-02" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        innerRef={addressRef}
+                        placeholder="Address"
+                        type="text"
+                        onFocus={(e) =>
+                          setState({ ...state, addressFocus: true })
+                        }
+                        onBlur={(e) =>
+                          setState({ ...state, addressFocus: false })
+                        }
+                      />
+                    </InputGroup>
+                    <InputGroup
+                      className={classnames({
+                        "input-group-focus": state.zipFocus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="tim-icons icon-single-02" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        innerRef={zipRef}
+                        placeholder="Zip"
+                        type="text"
+                        onFocus={(e) => setState({ ...state, zipFocus: true })}
+                        onBlur={(e) => setState({ ...state, zipFocus: false })}
+                      />
+                    </InputGroup>
+                    <InputGroup
+                      className={classnames({
+                        "input-group-focus": state.contactNumberFocus,
+                      })}
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="tim-icons icon-single-02" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        innerRef={contactNumberRef}
+                        placeholder="Contact number"
+                        type="text"
+                        onFocus={(e) =>
+                          setState({ ...state, contactNumberFocus: true })
+                        }
+                        onBlur={(e) =>
+                          setState({ ...state, contactNumberFocus: false })
                         }
                       />
                     </InputGroup>
@@ -183,6 +374,7 @@ const Register = () => {
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
+                        innerRef={passwordRef}
                         placeholder="Password"
                         type="text"
                         onFocus={(e) => setState({ ...state, passFocus: true })}
