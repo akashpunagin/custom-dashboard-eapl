@@ -10,6 +10,24 @@ const login = async (email, password) => {
   return result;
 };
 
-export default {
-  login,
+const logout = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken !== null) {
+    const result = await apiClient.post(
+      "/auth/logout",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    if (result.status === 200) {
+      localStorage.setItem("accessToken", null);
+    }
+    return result;
+  }
+  return null;
 };
+
+export default { login, logout };

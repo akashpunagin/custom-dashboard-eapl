@@ -37,7 +37,14 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
+import useApi from "hooks/useApi";
+import authApi from "apiService/auth/authApi";
+import { useNavigate } from "react-router-dom";
+
 const AdminNavbar = (props) => {
+  const postLogoutApi = useApi(authApi.logout);
+  const navigate = useNavigate();
+
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   const [modalSearch, setModalSearch] = React.useState(false);
   const [color, setColor] = React.useState("navbar-transparent");
@@ -68,6 +75,15 @@ const AdminNavbar = (props) => {
   const toggleModalSearch = () => {
     setModalSearch(!modalSearch);
   };
+
+  async function handleLogout() {
+    console.log("LOG OUT..");
+    const result = await postLogoutApi.request();
+    if (result?.status === 200) {
+      navigate("/auth/login");
+    }
+  }
+
   return (
     <>
       <Navbar
@@ -193,7 +209,9 @@ const AdminNavbar = (props) => {
                     <img alt="..." src={require("assets/img/mike.jpg")} />
                   </div>
                   <b className="caret d-none d-lg-block d-xl-block" />
-                  <p className="d-lg-none">Log out</p>
+                  <p className="d-lg-none" onClick={handleLogout}>
+                    Log out
+                  </p>
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-navbar" right tag="ul">
                   <NavLink tag="li">
@@ -204,7 +222,9 @@ const AdminNavbar = (props) => {
                   </NavLink>
                   <DropdownItem divider tag="li" />
                   <NavLink tag="li">
-                    <DropdownItem className="nav-item">Log out</DropdownItem>
+                    <DropdownItem className="nav-item" onClick={handleLogout}>
+                      Log out
+                    </DropdownItem>
                   </NavLink>
                 </DropdownMenu>
               </UncontrolledDropdown>

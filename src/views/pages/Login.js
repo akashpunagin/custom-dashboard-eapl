@@ -67,7 +67,7 @@ const Login = () => {
     }
 
     const result = await postLoginApi.request(email, password);
-    if (result.status === 200) {
+    if (result?.status === 200) {
       navigate("/admin");
     }
   }

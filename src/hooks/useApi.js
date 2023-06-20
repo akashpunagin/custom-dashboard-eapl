@@ -31,9 +31,9 @@ export default (apiFunc) => {
       result = null;
 
       setData(null);
-      setstatus(err.response.status);
-      if (err.response.data.error !== undefined) {
-        setError(err.response.data.error);
+      setstatus(err.response?.status);
+      if (err.response?.data.error !== undefined) {
+        setError(err.response?.data.error);
       } else {
         setError(err.message || "Unexpected Error!");
       }
