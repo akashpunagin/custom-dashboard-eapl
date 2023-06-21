@@ -12,4 +12,16 @@ const addDevice = async (data) => {
   });
 };
 
-export default { addDevice };
+const getAllDevices = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken === null) {
+    return;
+  }
+  return await apiClient.get("/device/get-all-devices", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
+
+export default { addDevice, getAllDevices };

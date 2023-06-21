@@ -43,6 +43,8 @@ import Login from "views/pages/Login.js";
 import Rtl from "views/pages/Rtl.js";
 import Lock from "views/pages/Lock.js";
 import AddDevice from "views/AddDevice";
+import ShowDevice from "views/ShowDevices";
+import ShowDevices from "views/ShowDevices";
 
 const routes = [
   {
@@ -59,6 +61,14 @@ const routes = [
     rtlName: "لوحة القيادة",
     icon: "tim-icons icon-chart-pie-36",
     component: <AddDevice />,
+    layout: "/admin",
+  },
+  {
+    path: "/showDevices",
+    name: "Show Devices",
+    rtlName: "لوحة القيادة",
+    icon: "tim-icons icon-chart-pie-36",
+    component: <ShowDevices />,
     layout: "/admin",
   },
   {
