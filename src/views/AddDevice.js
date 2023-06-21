@@ -221,7 +221,6 @@ const AddDevice = () => {
                   <Label md="3">Select Tenant</Label>
                   <Col md="9">
                     <FormGroup>
-                      {/* {//TODO add tenent dropdown} */}
                       <Select
                         className="react-select info"
                         classNamePrefix="react-select"

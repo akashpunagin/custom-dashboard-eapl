@@ -142,8 +142,7 @@ const Register = () => {
       if (result?.status === 200) {
         setIsUserRegistered((prev) => true);
         await handleSendConfirmationEmail(result?.data.userId);
-        //TODO uncomment
-        // navigate("/auth/login");
+        navigate("/auth/login");
       }
     }
     if (registrationModeState === registrationMode.customer) {
@@ -151,8 +150,7 @@ const Register = () => {
       if (result?.status === 200) {
         setIsUserRegistered((prev) => true);
         await handleSendConfirmationEmail(result?.data.userId);
-        //TODO uncomment
-        // navigate("/auth/login");
+        navigate("/auth/login");
       }
     }
   }
