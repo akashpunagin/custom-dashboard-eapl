@@ -38,12 +38,18 @@ import {
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUser } from "@fortawesome/fontawesome-free-regular";
+import useApi from "hooks/useApi";
+import authApi from "apiService/auth/authApi";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const postRegisterAsAdminApi = useApi(authApi.registerAsAdmin);
+  const postRegisterAsCustomerApi = useApi(authApi.registerAsCustomer);
+
   const registrationMode = {
     admin: "admin",
     customer: "customer",
-    tenant: "tenant",
   };
 
   const [registrationModeState, setRegistrationModeState] = useState(
@@ -77,8 +83,58 @@ const Register = () => {
     if (registrationModeState === registrationMode.customer) {
       return "as customer";
     }
-    if (registrationModeState === registrationMode.tenant) {
-      return "as tenant";
+  }
+
+  function getRegisterErrorMessage() {
+    if (
+      registrationModeState === registrationMode.admin &&
+      postRegisterAsAdminApi.error
+    ) {
+      return `Admin Register Error: ${postRegisterAsAdminApi.error}`;
+    } else if (
+      registrationModeState === registrationMode.customer &&
+      postRegisterAsCustomerApi.error
+    ) {
+      return `Customer Register Error: ${postRegisterAsCustomerApi.error}`;
+    }
+  }
+
+  async function handleRegisterClick() {
+    const email = emailRef.current.value;
+    const firstName = firstNameRef.current.value;
+    const lastName = lastNameRef.current.value;
+    const country = countryRef.current.value;
+    const state = stateRef.current.value;
+    const city = cityRef.current.value;
+    const zip = zipRef.current.value;
+    const address = addressRef.current.value;
+    const contactNumber = contactNumberRef.current.value;
+    const password = passwordRef.current.value;
+
+    const data = {
+      email,
+      firstName,
+      lastName,
+      country,
+      state,
+      city,
+      zip,
+      address,
+      contactNumber,
+      password,
+    };
+
+    if (registrationModeState === registrationMode.admin) {
+      const result = await postRegisterAsAdminApi.request(data);
+      if (result?.status === 200) {
+        navigate("/auth/login");
+      }
+    }
+    if (registrationModeState === registrationMode.customer) {
+      const result = await postRegisterAsCustomerApi.request(data);
+      if (result?.status === 200) {
+        navigate("/auth/login");
+      }
     }
   }
 
@@ -119,10 +175,7 @@ const Register = () => {
                 href="#pablo"
                 onClick={(e) => {
                   e.preventDefault();
-                  setRegistrationModeState((prev) => {
-                    console.log({ prev });
-                    return registrationMode.admin;
-                  });
+                  setRegistrationModeState((prev) => registrationMode.admin);
                 }}
                 size="lg"
               >
@@ -139,18 +192,6 @@ const Register = () => {
                 size="lg"
               >
                 Register as Customer
-              </Button>
-              <Button
-                className="btn-round"
-                color="primary"
-                href="#pablo"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setRegistrationModeState((prev) => registrationMode.tenant);
-                }}
-                size="lg"
-              >
-                Register as Tenant
               </Button>
             </Col>
             <Col className="mr-auto" md="9">
@@ -246,7 +287,7 @@ const Register = () => {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="tim-icons icon-single-02" />
+                          <FontAwesomeIcon icon={faUser} />
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
@@ -268,7 +309,7 @@ const Register = () => {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="tim-icons icon-single-02" />
+                          <FontAwesomeIcon icon={faUser} />
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
@@ -290,7 +331,7 @@ const Register = () => {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="tim-icons icon-single-02" />
+                          <FontAwesomeIcon icon={faUser} />
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
@@ -308,7 +349,7 @@ const Register = () => {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="tim-icons icon-single-02" />
+                          <FontAwesomeIcon icon={faUser} />
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
@@ -330,7 +371,7 @@ const Register = () => {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="tim-icons icon-single-02" />
+                          <FontAwesomeIcon icon={faUser} />
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
@@ -348,7 +389,7 @@ const Register = () => {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="tim-icons icon-single-02" />
+                          <FontAwesomeIcon icon={faUser} />
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
@@ -370,7 +411,7 @@ const Register = () => {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="tim-icons icon-lock-circle" />
+                          <FontAwesomeIcon icon={faUser} />
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
@@ -398,11 +439,17 @@ const Register = () => {
                     className="btn-round"
                     color="primary"
                     href="#pablo"
-                    onClick={(e) => e.preventDefault()}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleRegisterClick();
+                    }}
                     size="lg"
                   >
-                    Get Started
+                    Register
                   </Button>
+                  <h4 style={{ color: "black" }}>
+                    {getRegisterErrorMessage()}
+                  </h4>
                 </CardFooter>
               </Card>
             </Col>

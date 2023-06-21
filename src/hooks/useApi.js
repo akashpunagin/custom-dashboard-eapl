@@ -28,8 +28,9 @@ export default (apiFunc) => {
       setstatus(result.status);
       setError("");
     } catch (err) {
-      result = null;
+      apiLogger(err.response);
 
+      result = null;
       setData(null);
       setstatus(err.response?.status);
       if (err.response?.data.error !== undefined) {

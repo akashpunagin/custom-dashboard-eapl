@@ -33,7 +33,6 @@ import {
   Col,
 } from "reactstrap";
 
-import testApi from "apiService/test/testApi";
 import authApi from "apiService/auth/authApi";
 import useApi from "hooks/useApi";
 import { useNavigate } from "react-router-dom";

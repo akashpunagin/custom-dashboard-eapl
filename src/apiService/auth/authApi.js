@@ -30,4 +30,91 @@ const logout = async () => {
   return null;
 };
 
-export default { login, logout };
+const registerAsAdmin = async (data) => {
+  const {
+    email,
+    firstName,
+    lastName,
+    country,
+    state,
+    city,
+    zip,
+    address,
+    contactNumber,
+    password,
+  } = data;
+  return await apiClient.post("/auth/register-admin", {
+    email,
+    firstName,
+    lastName,
+    country,
+    state,
+    city,
+    zip,
+    address,
+    contact_number: contactNumber,
+    password,
+  });
+};
+
+const registerAsCustomer = async (data) => {
+  const {
+    email,
+    firstName,
+    lastName,
+    country,
+    state,
+    city,
+    zip,
+    address,
+    contactNumber,
+    password,
+  } = data;
+  return await apiClient.post("/auth/register-customer", {
+    email,
+    firstName,
+    lastName,
+    country,
+    state,
+    city,
+    zip,
+    address,
+    contact_number: contactNumber,
+    password,
+  });
+};
+
+const registerAsTenant = async (data) => {
+  const {
+    email,
+    firstName,
+    lastName,
+    country,
+    state,
+    city,
+    zip,
+    address,
+    contactNumber,
+    password,
+  } = data;
+  return await apiClient.post("/auth/register-tenant", {
+    email,
+    firstName,
+    lastName,
+    country,
+    state,
+    city,
+    zip,
+    address,
+    contact_number: contactNumber,
+    password,
+  });
+};
+
+export default {
+  login,
+  logout,
+  registerAsAdmin,
+  registerAsCustomer,
+  registerAsTenant,
+};
