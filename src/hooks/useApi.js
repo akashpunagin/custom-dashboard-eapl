@@ -3,9 +3,9 @@ import { useState } from "react";
 function apiLogger(result) {
   console.log("\n\n");
   console.log("------API LOGGER------");
-  console.log("URL:", result.config.url);
-  console.log("STATUS CODE:", result.status);
-  console.log("DATA:", result.data);
+  console.log("URL:", result?.config?.url);
+  console.log("STATUS CODE:", result?.status);
+  console.log("DATA:", result?.data);
   console.log("------API LOGGER------");
   console.log("\n\n");
 }

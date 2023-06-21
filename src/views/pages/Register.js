@@ -46,6 +46,7 @@ const Register = () => {
   const navigate = useNavigate();
   const postRegisterAsAdminApi = useApi(authApi.registerAsAdmin);
   const postRegisterAsCustomerApi = useApi(authApi.registerAsCustomer);
+  const postSendConfirmationEmailApi = useApi(authApi.sendConfirmationEmail);
 
   const registrationMode = {
     admin: "admin",
@@ -57,6 +58,7 @@ const Register = () => {
   );
 
   const [state, setState] = React.useState({});
+  const [isUserRegistered, setIsUserRegistered] = useState(false);
 
   const emailRef = useRef();
   const firstNameRef = useRef();
@@ -99,6 +101,17 @@ const Register = () => {
     }
   }
 
+  async function handleSendConfirmationEmail(userId) {
+    const emailConfirmationResult = await postSendConfirmationEmailApi.request(
+      userId
+    );
+    if (emailConfirmationResult.status === 200) {
+      alert("Confirmation email sent");
+    } else {
+      alert("Error while sending confirmation email");
+    }
+  }
+
   async function handleRegisterClick() {
     const email = emailRef.current.value;
     const firstName = firstNameRef.current.value;
@@ -127,13 +140,19 @@ const Register = () => {
     if (registrationModeState === registrationMode.admin) {
       const result = await postRegisterAsAdminApi.request(data);
       if (result?.status === 200) {
-        navigate("/auth/login");
+        setIsUserRegistered((prev) => true);
+        await handleSendConfirmationEmail(result?.data.userId);
+        //TODO uncomment
+        // navigate("/auth/login");
       }
     }
     if (registrationModeState === registrationMode.customer) {
       const result = await postRegisterAsCustomerApi.request(data);
       if (result?.status === 200) {
-        navigate("/auth/login");
+        setIsUserRegistered((prev) => true);
+        await handleSendConfirmationEmail(result?.data.userId);
+        //TODO uncomment
+        // navigate("/auth/login");
       }
     }
   }
@@ -449,6 +468,11 @@ const Register = () => {
                   </Button>
                   <h4 style={{ color: "black" }}>
                     {getRegisterErrorMessage()}
+                  </h4>
+                  <h4 style={{ color: "black" }}>
+                    {isUserRegistered && postSendConfirmationEmailApi.loading
+                      ? "Sending Confirmation email"
+                      : ""}
                   </h4>
                 </CardFooter>
               </Card>

@@ -97,6 +97,7 @@ const registerAsTenant = async (data) => {
     contactNumber,
     password,
   } = data;
+  //TODO add customer access token in header
   return await apiClient.post("/auth/register-tenant", {
     email,
     firstName,
@@ -111,10 +112,15 @@ const registerAsTenant = async (data) => {
   });
 };
 
+const sendConfirmationEmail = async (userId) => {
+  return await apiClient.post("/auth/send-confirmation-email", { userId });
+};
+
 export default {
   login,
   logout,
   registerAsAdmin,
   registerAsCustomer,
   registerAsTenant,
+  sendConfirmationEmail,
 };
