@@ -45,6 +45,7 @@ import Lock from "views/pages/Lock.js";
 import AddDevice from "views/AddDevice";
 import ShowDevice from "views/ShowDevices";
 import ShowDevices from "views/ShowDevices";
+import AddTenant from "views/AddTenant";
 
 const routes = [
   {
@@ -69,6 +70,14 @@ const routes = [
     rtlName: "لوحة القيادة",
     icon: "tim-icons icon-chart-pie-36",
     component: <ShowDevices />,
+    layout: "/admin",
+  },
+  {
+    path: "/addTenant",
+    name: "Add Tenant",
+    rtlName: "لوحة القيادة",
+    icon: "tim-icons icon-chart-pie-36",
+    component: <AddTenant />,
     layout: "/admin",
   },
   {

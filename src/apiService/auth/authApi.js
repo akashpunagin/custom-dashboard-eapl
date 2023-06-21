@@ -85,30 +85,16 @@ const registerAsCustomer = async (data) => {
 };
 
 const registerAsTenant = async (data) => {
-  const {
-    email,
-    firstName,
-    lastName,
-    country,
-    state,
-    city,
-    zip,
-    address,
-    contactNumber,
-    password,
-  } = data;
-  //TODO add customer access token in header
-  return await apiClient.post("/auth/register-tenant", {
-    email,
-    firstName,
-    lastName,
-    country,
-    state,
-    city,
-    zip,
-    address,
-    contact_number: contactNumber,
-    password,
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken === null) {
+    return;
+  }
+  console.log({ data });
+
+  return await apiClient.post("/auth/register-tenant", data, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
   });
 };
 
