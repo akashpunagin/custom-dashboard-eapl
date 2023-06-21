@@ -116,6 +116,18 @@ const sendConfirmationEmail = async (userId) => {
   return await apiClient.post("/auth/send-confirmation-email", { userId });
 };
 
+const myRole = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken === null) {
+    return;
+  }
+  return await apiClient.get("/auth/my-role", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
+
 export default {
   login,
   logout,
@@ -123,4 +135,5 @@ export default {
   registerAsCustomer,
   registerAsTenant,
   sendConfirmationEmail,
+  myRole,
 };

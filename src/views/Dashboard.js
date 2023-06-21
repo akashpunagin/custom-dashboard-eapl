@@ -14,7 +14,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useEffect, useState } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react plugin used to create charts
@@ -52,6 +52,9 @@ import {
   chartExample3,
   chartExample4,
 } from "variables/charts.js";
+import useApi from "hooks/useApi";
+import profileApi from "apiService/profile/profileApi";
+import authApi from "apiService/auth/authApi";
 
 var mapData = {
   AU: 760,
@@ -68,13 +71,36 @@ var mapData = {
 };
 
 const Dashboard = () => {
+  const getMyProfileApi = useApi(profileApi.myProfile);
+  const getMyRoleApi = useApi(authApi.myRole);
+
   const [bigChartData, setbigChartData] = React.useState("data1");
   const setBgChartData = (name) => {
     setbigChartData(name);
   };
+
+  async function setUserDetails() {
+    await getMyProfileApi.request();
+    await getMyRoleApi.request();
+  }
+
+  useEffect(() => {
+    setUserDetails();
+  }, []);
+
   return (
     <>
       <div className="content">
+        <h1>
+          {getMyProfileApi.loading
+            ? "Loading"
+            : `Welcome ${getMyProfileApi?.data?.firstName} ${getMyProfileApi?.data?.lastName}`}
+        </h1>
+        <h4>
+          {getMyRoleApi.loading
+            ? "Loading"
+            : `You are logged in as ${getMyRoleApi?.data?.role}`}
+        </h4>
         <Row>
           <Col xs="12">
             <Card className="card-chart">
