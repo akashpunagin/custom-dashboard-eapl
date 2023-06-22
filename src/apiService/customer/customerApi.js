@@ -12,4 +12,20 @@ const getCustomers = async () => {
   });
 };
 
-export default { getCustomers };
+const assignDeviceToTenant = async (deviceId, tenantId) => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken === null) {
+    return;
+  }
+  return await apiClient.post(
+    "/customer/deviceTenants/add",
+    { tenantId, deviceId },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+};
+
+export default { getCustomers, assignDeviceToTenant };

@@ -46,13 +46,14 @@ import useApi from "hooks/useApi";
 import deviceApi from "apiService/device/deviceApi";
 import { showWarningAlert } from "utils/alerts/alerts";
 import { showSuccessAlert } from "utils/alerts/alerts";
+import customerApi from "apiService/customer/customerApi";
 
 const AddDevice = () => {
   const [alert, setAlert] = React.useState(null);
 
-  const [selectedTenant, setSelectedTenant] = useState(null);
-  const [tenants, setTenants] = useState([]);
-  const getTenantsApi = useApi(tenantApi.getTenants);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [customers, setCustomers] = useState([]);
+  const getCustomerApi = useApi(customerApi.getCustomers);
   const postAddDeviceApi = useApi(deviceApi.addDevice);
 
   const deviceIdRef = useRef();
@@ -70,10 +71,6 @@ const AddDevice = () => {
   const u_longRef = useRef();
   const u_conn_ssidRef = useRef();
 
-  const hideAlert = () => {
-    setAlert(null);
-  };
-
   function setDefaultValues() {
     varientRef.current.value = "1";
     hw_verRef.current.value = "1";
@@ -88,28 +85,28 @@ const AddDevice = () => {
     u_longRef.current.value = "1";
   }
 
-  async function setTenantsState() {
-    const result = await getTenantsApi.request();
-    console.log({ getTenantsApi });
+  async function setCustomersState() {
+    const result = await getCustomerApi.request();
+    console.log({ getCustomerApi });
     if (result?.status !== 200) {
       showWarningAlert(
         setAlert,
-        `Error while fetching tenants: ${getTenantsApi.error}`
+        `Error while fetching customers: ${getCustomerApi.error}`
       );
       return;
     }
-    const dropdownTenants = result?.data?.map((tenant) => {
+    const dropdownCustomers = result?.data?.map((customer) => {
       return {
-        value: tenant.userId,
-        label: `${tenant.firstName} ${tenant.lastName}: ${tenant.email}`,
+        value: customer.userId,
+        label: `${customer.firstName} ${customer.lastName}: ${customer.email}`,
       };
     });
-    setTenants((prev) => dropdownTenants);
+    setCustomers((prev) => dropdownCustomers);
   }
 
   useEffect(() => {
     setDefaultValues();
-    setTenantsState();
+    setCustomersState();
   }, []);
 
   function getNumberFormField(label, ref) {
@@ -124,10 +121,8 @@ const AddDevice = () => {
   }
 
   async function handleAddDevice() {
-    console.log("ADD DEV");
-
-    if (selectedTenant === null) {
-      showWarningAlert(setAlert, "Select Tenant");
+    if (selectedCustomer === null) {
+      showWarningAlert(setAlert, "Select Customer");
       return;
     }
 
@@ -145,7 +140,7 @@ const AddDevice = () => {
     const u_lat = u_latRef.current.value;
     const u_long = u_longRef.current.value;
     const u_conn_ssid = u_conn_ssidRef.current.value;
-    const user_id = selectedTenant.value;
+    const user_id = selectedCustomer.value;
 
     const data = {
       user_id,
@@ -194,19 +189,19 @@ const AddDevice = () => {
                   </FormGroup>
                 </Col>
               </Row>
-              {tenants?.length !== 0 && (
+              {customers?.length !== 0 && (
                 <Row>
-                  <Label md="3">Select Tenant</Label>
+                  <Label md="3">Select Customer</Label>
                   <Col md="9">
                     <FormGroup>
                       <Select
                         className="react-select info"
                         classNamePrefix="react-select"
                         name="singleSelect"
-                        value={selectedTenant}
-                        onChange={(value) => setSelectedTenant(value)}
-                        options={tenants}
-                        placeholder="Select Tenant"
+                        value={selectedCustomer}
+                        onChange={(value) => setSelectedCustomer(value)}
+                        options={customers}
+                        placeholder="Select Customer"
                       />
                     </FormGroup>
                   </Col>

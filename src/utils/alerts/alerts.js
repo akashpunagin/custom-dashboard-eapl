@@ -1,6 +1,7 @@
 import ReactBSAlert from "react-bootstrap-sweetalert";
 
 const showSuccessAlert = (setAlert, label) => {
+  setAlert(null);
   setAlert(
     <ReactBSAlert
       success
@@ -17,6 +18,7 @@ const showSuccessAlert = (setAlert, label) => {
 };
 
 const showWarningAlert = (setAlert, label) => {
+  setAlert(null);
   setAlert(
     <ReactBSAlert
       error
