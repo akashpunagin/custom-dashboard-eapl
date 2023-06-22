@@ -94,7 +94,7 @@ const Dashboard = () => {
         <h1>
           {getMyProfileApi.loading
             ? "Loading"
-            : `Welcome ${getMyProfileApi?.data?.firstName} ${getMyProfileApi?.data?.lastName}`}
+            : `Welcome ${getMyProfileApi?.data?.firstName} ${getMyProfileApi?.data?.lastName}: ${getMyProfileApi?.data?.email}`}
         </h1>
         <h4>
           {getMyRoleApi.loading

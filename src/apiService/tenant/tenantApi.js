@@ -12,4 +12,20 @@ const getTenants = async () => {
   });
 };
 
-export default { getTenants };
+const getTenantsByCustomerId = async (customerUserId) => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken === null) {
+    return;
+  }
+  return await apiClient.post(
+    "/tenant/get-by-customer-id",
+    { customerId: customerUserId },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+};
+
+export default { getTenants, getTenantsByCustomerId };
