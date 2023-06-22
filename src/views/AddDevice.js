@@ -160,14 +160,15 @@ const AddDevice = () => {
       u_conn_ssid,
     };
 
-    console.log(data);
+    const result = await postAddDeviceApi.request(data);
 
-    await postAddDeviceApi.request(data);
-    setAlert(null);
-    if (postAddDeviceApi.status === 200) {
+    if (result?.status === 200) {
       showSuccessAlert(setAlert, "Device Registered");
     } else {
-      showWarningAlert(setAlert, postAddDeviceApi.error);
+      showWarningAlert(
+        setAlert,
+        `Error while adding device: ${postAddDeviceApi.error}`
+      );
     }
   }
 
