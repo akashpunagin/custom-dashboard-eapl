@@ -96,7 +96,6 @@ const Customer = (props) => {
       if (prop.collapse) {
         return getRoutes(prop.views);
       }
-      console.log(prop.layout);
       if (prop.layout === "/customer") {
         return (
           <Route path={prop.path} element={prop.component} key={key} exact />

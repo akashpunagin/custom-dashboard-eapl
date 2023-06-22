@@ -67,7 +67,6 @@ const routes = [
     layout: "/customer",
   },
   //TODO assign devices
-  //TODO my tenants
   {
     path: "/myTenants",
     name: "My Tenants",
