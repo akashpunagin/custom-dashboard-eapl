@@ -44,6 +44,8 @@ import Select from "react-select";
 import tenantApi from "apiService/tenant/tenantApi";
 import useApi from "hooks/useApi";
 import deviceApi from "apiService/device/deviceApi";
+import { showWarningAlert } from "utils/alerts/alerts";
+import { showSuccessAlert } from "utils/alerts/alerts";
 
 const AddDevice = () => {
   const [alert, setAlert] = React.useState(null);
@@ -72,38 +74,6 @@ const AddDevice = () => {
     setAlert(null);
   };
 
-  const showSuccessDeviceRegistrationAlert = () => {
-    setAlert(
-      <ReactBSAlert
-        success
-        style={{ display: "block", marginTop: "-100px" }}
-        title="Success"
-        onConfirm={() => hideAlert()}
-        onCancel={() => hideAlert()}
-        confirmBtnBsStyle="success"
-        btnSize=""
-      >
-        Device Registered successfully
-      </ReactBSAlert>
-    );
-  };
-
-  const showWarningDeviceRegistrationAlert = (label) => {
-    setAlert(
-      <ReactBSAlert
-        error
-        style={{ display: "block", marginTop: "-100px" }}
-        title="Warning"
-        onConfirm={() => hideAlert()}
-        onCancel={() => hideAlert()}
-        confirmBtnBsStyle="success"
-        btnSize=""
-      >
-        {label}
-      </ReactBSAlert>
-    );
-  };
-
   function setDefaultValues() {
     varientRef.current.value = "1";
     hw_verRef.current.value = "1";
@@ -120,7 +90,15 @@ const AddDevice = () => {
 
   async function setTenantsState() {
     const result = await getTenantsApi.request();
-    const dropdownTenants = result.data.map((tenant) => {
+    console.log({ getTenantsApi });
+    if (getTenantsApi.status !== 200) {
+      showWarningAlert(
+        setAlert,
+        `Error while fetching tenants: ${getTenantsApi.error}`
+      );
+      return;
+    }
+    const dropdownTenants = result?.data?.map((tenant) => {
       return {
         value: tenant.userId,
         label: `${tenant.firstName} ${tenant.lastName}: ${tenant.email}`,
@@ -149,7 +127,7 @@ const AddDevice = () => {
     console.log("ADD DEV");
 
     if (selectedTenant === null) {
-      showWarningDeviceRegistrationAlert("Select Tenant");
+      showWarningAlert(setAlert, "Select Tenant");
       return;
     }
 
@@ -192,9 +170,9 @@ const AddDevice = () => {
     await postAddDeviceApi.request(data);
     console.log({ postAddDeviceApi });
     if (postAddDeviceApi.status === 200) {
-      showSuccessDeviceRegistrationAlert();
+      showSuccessAlert(setAlert, "Device Registered");
     } else {
-      showWarningDeviceRegistrationAlert(postAddDeviceApi.error);
+      showWarningAlert(setAlert, postAddDeviceApi.error);
     }
   }
 
@@ -216,7 +194,7 @@ const AddDevice = () => {
                   </FormGroup>
                 </Col>
               </Row>
-              {tenants.length !== 0 && (
+              {tenants?.length !== 0 && (
                 <Row>
                   <Label md="3">Select Tenant</Label>
                   <Col md="9">
