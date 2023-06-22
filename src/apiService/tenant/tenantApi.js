@@ -28,4 +28,16 @@ const getTenantsByCustomerId = async (customerUserId) => {
   );
 };
 
-export default { getTenants, getTenantsByCustomerId };
+const getAssignedDevices = async (customerUserId) => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken === null) {
+    return;
+  }
+  return await apiClient.get("/tenant/get-assigned-devices", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
+
+export default { getTenants, getTenantsByCustomerId, getAssignedDevices };

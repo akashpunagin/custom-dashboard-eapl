@@ -39,12 +39,13 @@ import {
 } from "reactstrap";
 import useApi from "hooks/useApi";
 import deviceApi from "apiService/device/deviceApi";
+import tenantApi from "apiService/tenant/tenantApi";
 
-const ShowDevices = () => {
-  const getAllDevicesApi = useApi(deviceApi.getAllDevices);
+const MyDevices = () => {
+  const getAssignedDevicesApi = useApi(tenantApi.getAssignedDevices);
 
   async function setDevices() {
-    await getAllDevicesApi.request();
+    await getAssignedDevicesApi.request();
   }
 
   useEffect(() => {
@@ -56,11 +57,11 @@ const ShowDevices = () => {
       <div className="content">
         <Card>
           <CardHeader>
-            <CardTitle tag="h2">All Devices</CardTitle>
+            <CardTitle tag="h2">My Devices</CardTitle>
           </CardHeader>
           <CardBody>
-            {getAllDevicesApi.loading ? "Loading All Devices" : ""}
-            {getAllDevicesApi.data !== null && (
+            {getAssignedDevicesApi.loading ? "Loading All Devices" : ""}
+            {getAssignedDevicesApi.data !== null && (
               <Fragment>
                 <Row>
                   <Col sm="1">
@@ -75,7 +76,7 @@ const ShowDevices = () => {
                   <Col></Col>
                 </Row>
                 <br></br>
-                {getAllDevicesApi.data.map((device, index) => {
+                {getAssignedDevicesApi.data.map((device, index) => {
                   return (
                     <Fragment key={index}>
                       <Row>
@@ -107,4 +108,4 @@ const ShowDevices = () => {
   );
 };
 
-export default ShowDevices;
+export default MyDevices;

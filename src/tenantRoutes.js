@@ -47,6 +47,7 @@ import ShowDevices from "views/ShowDevices";
 import AddTenant from "views/AddTenant";
 import ShowTenants from "views/ShowTenants";
 import ShowCustomers from "views/ShowCustomers";
+import MyDevices from "views/MyDevices";
 
 const routes = [
   {
@@ -57,7 +58,14 @@ const routes = [
     component: <Dashboard />,
     layout: "/tenant",
   },
-  //TODO my devices
+  {
+    path: "/myDevices",
+    name: "My Devices",
+    rtlName: "لوحة القيادة",
+    icon: "tim-icons icon-chart-pie-36",
+    component: <MyDevices />,
+    layout: "/tenant",
+  },
   //TODO generate report
   {
     collapse: true,

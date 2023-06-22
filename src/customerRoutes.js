@@ -67,7 +67,6 @@ const routes = [
     component: <AddTenant />,
     layout: "/customer",
   },
-  //TODO assign devices
   {
     path: "/assignDevices",
     name: "Assign Devices",
