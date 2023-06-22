@@ -47,20 +47,20 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/fontawesome-free-regular";
 import useApi from "hooks/useApi";
-import tenantApi from "apiService/tenant/tenantApi";
+import customerApi from "apiService/customer/customerApi";
 
-const ShowTenants = () => {
-  const getAllTenantsApi = useApi(tenantApi.getTenants);
+const ShowCustomers = () => {
+  const getAllCustomersApi = useApi(customerApi.getCustomers);
 
-  async function setTenantsState() {
-    await getAllTenantsApi.request();
+  async function setCustomersState() {
+    await getAllCustomersApi.request();
   }
 
   useEffect(() => {
-    setTenantsState();
+    setCustomersState();
   }, []);
 
-  function getTenantCard(
+  function getCustomerCard(
     index,
     firstName,
     lastName,
@@ -97,18 +97,18 @@ const ShowTenants = () => {
   return (
     <>
       <div className="content">
-        <CardTitle tag="h2">All Tenants</CardTitle>
-        {getAllTenantsApi.loading ? "Loading all tenants" : ""}
-        {getAllTenantsApi.data &&
-          getAllTenantsApi.data.map((tenant, index) => {
-            return getTenantCard(
+        <CardTitle tag="h2">All Customers</CardTitle>
+        {getAllCustomersApi.loading ? "Loading all customers" : ""}
+        {getAllCustomersApi.data &&
+          getAllCustomersApi.data.map((customer, index) => {
+            return getCustomerCard(
               index,
-              tenant.firstName,
-              tenant.lastName,
-              tenant.email,
-              tenant.contactNumber,
-              tenant.userId,
-              tenant.address
+              customer.firstName,
+              customer.lastName,
+              customer.email,
+              customer.contact_number,
+              customer.userId,
+              customer.address
             );
           })}
       </div>
@@ -116,4 +116,4 @@ const ShowTenants = () => {
   );
 };
 
-export default ShowTenants;
+export default ShowCustomers;
