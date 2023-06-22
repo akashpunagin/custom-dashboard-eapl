@@ -22,6 +22,7 @@ import AuthLayout from "layouts/Auth/Auth.js";
 import AdminLayout from "layouts/Admin/Admin.js";
 import RTLLayout from "layouts/RTL/RTL.js";
 import CustomerLayout from "layouts/Customer/Customer";
+import TenantLayout from "layouts/Tenant/Tenant";
 
 import "assets/css/nucleo-icons.css";
 import "react-notification-alert/dist/animate.css";
@@ -36,7 +37,10 @@ root.render(
       <Route path="/auth/*" element={<AuthLayout />} />
       <Route path="/admin/*" element={<AdminLayout />} />
       <Route path="/customer/*" element={<CustomerLayout />} />
+      <Route path="/tenant/*" element={<TenantLayout />} />
+
       <Route path="/rtl/*" element={<RTLLayout />} />
+
       <Route path="*" element={<Navigate to="/auth/login/" replace />} />
     </Routes>
   </BrowserRouter>

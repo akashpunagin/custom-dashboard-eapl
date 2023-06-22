@@ -91,7 +91,7 @@ const AddDevice = () => {
   async function setTenantsState() {
     const result = await getTenantsApi.request();
     console.log({ getTenantsApi });
-    if (getTenantsApi.status !== 200) {
+    if (result?.status !== 200) {
       showWarningAlert(
         setAlert,
         `Error while fetching tenants: ${getTenantsApi.error}`
@@ -168,7 +168,7 @@ const AddDevice = () => {
     console.log(data);
 
     await postAddDeviceApi.request(data);
-    console.log({ postAddDeviceApi });
+    setAlert(null);
     if (postAddDeviceApi.status === 200) {
       showSuccessAlert(setAlert, "Device Registered");
     } else {

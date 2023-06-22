@@ -55,50 +55,9 @@ const routes = [
     rtlName: "لوحة القيادة",
     icon: "tim-icons icon-chart-pie-36",
     component: <Dashboard />,
-    layout: "/admin",
+    layout: "/tenant",
   },
-  {
-    path: "/showDevices",
-    name: "Show Devices",
-    rtlName: "لوحة القيادة",
-    icon: "tim-icons icon-chart-pie-36",
-    component: <ShowDevices />,
-    layout: "/admin",
-  },
-  {
-    path: "/addTenant",
-    name: "Add Tenant",
-    rtlName: "لوحة القيادة",
-    icon: "tim-icons icon-chart-pie-36",
-    component: <AddTenant />,
-    layout: "/admin",
-  },
-  {
-    path: "/addDevice",
-    name: "Add Device",
-    rtlName: "لوحة القيادة",
-    icon: "tim-icons icon-chart-pie-36",
-    component: <AddDevice />,
-    layout: "/admin",
-  },
-  {
-    path: "/showTenants",
-    name: "Show Tenants",
-    rtlName: "لوحة القيادة",
-    icon: "tim-icons icon-chart-pie-36",
-    component: <ShowTenants />,
-    layout: "/admin",
-  },
-  {
-    path: "/showCustomers",
-    name: "Show Customers",
-    rtlName: "لوحة القيادة",
-    icon: "tim-icons icon-chart-pie-36",
-    component: <ShowCustomers />,
-    layout: "/admin",
-  },
-  //TODO add sensor master
-  //TODO sensors list
+  //TODO my devices
   //TODO generate report
   {
     collapse: true,

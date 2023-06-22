@@ -27,13 +27,13 @@ import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
-import routes from "adminRoutes.js";
+import routes from "tenantRoutes.js";
 
 import logo from "assets/img/react-logo.png";
 
 var ps;
 
-const Admin = (props) => {
+const Tenant = (props) => {
   const [activeColor, setActiveColor] = React.useState("blue");
   const [sidebarMini, setSidebarMini] = React.useState(true);
   const [opacity, setOpacity] = React.useState(0);
@@ -96,7 +96,7 @@ const Admin = (props) => {
       if (prop.collapse) {
         return getRoutes(prop.views);
       }
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/tenant") {
         return (
           <Route path={prop.path} element={prop.component} key={key} exact />
         );
@@ -193,7 +193,7 @@ const Admin = (props) => {
           {getRoutes(routes)}
           <Route
             path="/"
-            element={<Navigate to="/admin/dashboard" replace />}
+            element={<Navigate to="/tenant/dashboard" replace />}
           />
         </Routes>
         {
@@ -214,4 +214,4 @@ const Admin = (props) => {
   );
 };
 
-export default Admin;
+export default Tenant;

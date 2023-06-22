@@ -69,13 +69,15 @@ const Login = () => {
     const result = await postLoginApi.request(email, password);
     if (result?.status === 200) {
       const roleResult = await getMyRoleApi.request();
-      console.log({ roleResult }, { getMyRoleApi });
       if (roleResult?.data.role === "ADMIN") {
         navigate("/admin");
       } else if (roleResult?.data.role === "CUSTOMER") {
         navigate("/customer");
+      } else if (roleResult?.data.role === "TENANT") {
+        navigate("/tenant");
       } else {
-        alert("TENET ROLE. NOT IMPLEMENTED");
+        alert("LAYOUT NOT IMPLEMENTED");
+        navigate("/auth");
       }
     }
   }

@@ -57,7 +57,17 @@ const routes = [
     component: <Dashboard />,
     layout: "/customer",
   },
-
+  {
+    path: "/addTenant",
+    name: "Add Tenant",
+    rtlName: "لوحة القيادة",
+    icon: "tim-icons icon-chart-pie-36",
+    component: <AddTenant />,
+    layout: "/customer",
+  },
+  //TODO assign devices
+  //TODO my tenants
+  //TODO generate reports
   {
     collapse: true,
     name: "Pages",
