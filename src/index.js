@@ -21,6 +21,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "layouts/Auth/Auth.js";
 import AdminLayout from "layouts/Admin/Admin.js";
 import RTLLayout from "layouts/RTL/RTL.js";
+import CustomerLayout from "layouts/Customer/Customer";
 
 import "assets/css/nucleo-icons.css";
 import "react-notification-alert/dist/animate.css";
@@ -34,6 +35,7 @@ root.render(
     <Routes>
       <Route path="/auth/*" element={<AuthLayout />} />
       <Route path="/admin/*" element={<AdminLayout />} />
+      <Route path="/customer/*" element={<CustomerLayout />} />
       <Route path="/rtl/*" element={<RTLLayout />} />
       <Route path="*" element={<Navigate to="/auth/login/" replace />} />
     </Routes>

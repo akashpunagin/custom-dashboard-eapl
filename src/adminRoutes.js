@@ -43,7 +43,6 @@ import Login from "views/pages/Login.js";
 import Rtl from "views/pages/Rtl.js";
 import Lock from "views/pages/Lock.js";
 import AddDevice from "views/AddDevice";
-import ShowDevice from "views/ShowDevices";
 import ShowDevices from "views/ShowDevices";
 import AddTenant from "views/AddTenant";
 import ShowTenants from "views/ShowTenants";
@@ -98,6 +97,7 @@ const routes = [
     component: <ShowCustomers />,
     layout: "/admin",
   },
+
   {
     collapse: true,
     name: "Pages",

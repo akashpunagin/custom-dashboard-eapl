@@ -42,6 +42,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const postLoginApi = useApi(authApi.login);
+  const getMyRoleApi = useApi(authApi.myRole);
   const emailRef = useRef();
   const passwordRef = useRef();
 
@@ -67,7 +68,15 @@ const Login = () => {
 
     const result = await postLoginApi.request(email, password);
     if (result?.status === 200) {
-      navigate("/admin");
+      const roleResult = await getMyRoleApi.request();
+      console.log({ roleResult }, { getMyRoleApi });
+      if (roleResult?.data.role === "ADMIN") {
+        navigate("/admin");
+      } else if (roleResult?.data.role === "CUSTOMER") {
+        navigate("/customer");
+      } else {
+        alert("TENET ROLE. NOT IMPLEMENTED");
+      }
     }
   }
 

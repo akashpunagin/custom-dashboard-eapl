@@ -27,13 +27,13 @@ import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
-import routes from "adminRoutes";
+import routes from "customerRoutes.js";
 
 import logo from "assets/img/react-logo.png";
 
 var ps;
 
-const Admin = (props) => {
+const Customer = (props) => {
   const [activeColor, setActiveColor] = React.useState("blue");
   const [sidebarMini, setSidebarMini] = React.useState(true);
   const [opacity, setOpacity] = React.useState(0);
@@ -96,7 +96,8 @@ const Admin = (props) => {
       if (prop.collapse) {
         return getRoutes(prop.views);
       }
-      if (prop.layout === "/admin") {
+      console.log(prop.layout);
+      if (prop.layout === "/customer") {
         return (
           <Route path={prop.path} element={prop.component} key={key} exact />
         );
@@ -193,7 +194,7 @@ const Admin = (props) => {
           {getRoutes(routes)}
           <Route
             path="/"
-            element={<Navigate to="/admin/dashboard" replace />}
+            element={<Navigate to="/customer/dashboard" replace />}
           />
         </Routes>
         {
@@ -214,4 +215,4 @@ const Admin = (props) => {
   );
 };
 
-export default Admin;
+export default Customer;
