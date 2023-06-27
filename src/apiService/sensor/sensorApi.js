@@ -24,4 +24,20 @@ const postAddSensorMaster = async (data) => {
   });
 };
 
-export default { getAllSensorTypes, postAddSensorMaster };
+const getSensorsOfDevice = async (deviceId) => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken === null) {
+    return;
+  }
+  return await apiClient.post(
+    "/sensorMaster/get-sensors-of-device",
+    { device_id: deviceId },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+};
+
+export default { getAllSensorTypes, postAddSensorMaster, getSensorsOfDevice };

@@ -77,7 +77,7 @@ const AddSensor = () => {
   const [existingSensors, setExistingSensors] = useState([]);
   const [addedSensors, setAddedSensors] = useState([]);
 
-  async function setAddDeviceState() {
+  async function setAllDeviceState() {
     const result = await getAllDeviceApi.request();
     if (result?.status !== 200) {
       showWarningAlert(setAlert, `Error while fetching all devices`);
@@ -141,7 +141,7 @@ const AddSensor = () => {
   }
 
   useEffect(() => {
-    setAddDeviceState();
+    setAllDeviceState();
     setSensorTypesState();
   }, []);
 

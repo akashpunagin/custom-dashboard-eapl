@@ -48,6 +48,7 @@ import AddTenant from "views/AddTenant";
 import ShowTenants from "views/ShowTenants";
 import ShowCustomers from "views/ShowCustomers";
 import AddSensor from "views/AddSensor";
+import ShowSensors from "views/ShowSensors";
 
 const routes = [
   {
@@ -106,7 +107,14 @@ const routes = [
     component: <AddSensor />,
     layout: "/admin",
   },
-  //TODO add sensor master
+  {
+    path: "/showSensor",
+    name: "Show Sensors",
+    rtlName: "لوحة القيادة",
+    icon: "tim-icons icon-chart-pie-36",
+    component: <ShowSensors />,
+    layout: "/admin",
+  },
   //TODO sensors list
   //TODO generate report
   {
