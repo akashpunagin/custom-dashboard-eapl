@@ -91,7 +91,7 @@ const Login = () => {
               <Card className="card-login card-white">
                 <CardHeader>
                   <img alt="..." src={require("assets/img/card-primary.png")} />
-                  <CardTitle tag="h1" className="text-dark ml-4 mt-3">
+                  <CardTitle tag="h1" className="ml-4 mt-3">
                     Log in
                   </CardTitle>
                 </CardHeader>
