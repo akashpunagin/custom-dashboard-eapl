@@ -84,6 +84,9 @@ const routes = [
     layout: "/customer",
   },
   //TODO generate reports
+
+  /*
+
   {
     collapse: true,
     name: "Pages",
@@ -388,6 +391,7 @@ const routes = [
     component: <Calendar />,
     layout: "/admin",
   },
+  */
 ];
 
 export default routes;

@@ -115,8 +115,9 @@ const routes = [
     component: <ShowSensors />,
     layout: "/admin",
   },
-  //TODO sensors list
   //TODO generate report
+
+  /*
   {
     collapse: true,
     name: "Pages",
@@ -421,6 +422,7 @@ const routes = [
     component: <Calendar />,
     layout: "/admin",
   },
+  */
 ];
 
 export default routes;

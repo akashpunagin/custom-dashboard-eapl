@@ -174,11 +174,11 @@ const Admin = (props) => {
         {...props}
         routes={routes}
         activeColor={activeColor}
-        logo={{
-          outterLink: "https://www.creative-tim.com/",
-          text: "Creative Tim",
-          imgSrc: logo,
-        }}
+        // logo={{
+        //   outterLink: "https://www.creative-tim.com/",
+        //   text: "Creative Tim",
+        //   imgSrc: logo,
+        // }}
         closeSidebar={closeSidebar}
       />
       <div className="main-panel" ref={mainPanelRef} data={activeColor}>
