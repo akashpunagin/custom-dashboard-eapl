@@ -130,53 +130,57 @@ const Dashboard = () => {
             </div>
           )}
         </h4>
-        <br></br>
-        <br></br>
-        <h2>Registration Details</h2>
-        <Row>
-          <Col md="4">
-            <Card>
-              <CardHeader>
-                <h4>Total Devices Registered</h4>
-              </CardHeader>
-              <CardBody>
-                <h4>
-                  {getAllDevicesApi.loading
-                    ? "Loading"
-                    : getAllDevicesApi?.data?.length}
-                </h4>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col md="4">
-            <Card>
-              <CardHeader>
-                <h4>Total Tenants Registered</h4>
-              </CardHeader>
-              <CardBody>
-                <h4>
-                  {getAllTenantsApi.loading
-                    ? "Loading"
-                    : getAllTenantsApi?.data?.length}
-                </h4>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col md="4">
-            <Card>
-              <CardHeader>
-                <h4>Total Customers Registered</h4>
-              </CardHeader>
-              <CardBody>
-                <h4>
-                  {getAllCustomersApi.loading
-                    ? "Loading"
-                    : getAllCustomersApi?.data?.length}
-                </h4>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
+        {getMyRoleApi?.data?.role === "ADMIN" && (
+          <div>
+            <br></br>
+            <br></br>
+            <h2>Registration Details</h2>
+            <Row>
+              <Col md="4">
+                <Card>
+                  <CardHeader>
+                    <h4>Total Devices Registered</h4>
+                  </CardHeader>
+                  <CardBody>
+                    <h4>
+                      {getAllDevicesApi.loading
+                        ? "Loading"
+                        : getAllDevicesApi?.data?.length}
+                    </h4>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col md="4">
+                <Card>
+                  <CardHeader>
+                    <h4>Total Tenants Registered</h4>
+                  </CardHeader>
+                  <CardBody>
+                    <h4>
+                      {getAllTenantsApi.loading
+                        ? "Loading"
+                        : getAllTenantsApi?.data?.length}
+                    </h4>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col md="4">
+                <Card>
+                  <CardHeader>
+                    <h4>Total Customers Registered</h4>
+                  </CardHeader>
+                  <CardBody>
+                    <h4>
+                      {getAllCustomersApi.loading
+                        ? "Loading"
+                        : getAllCustomersApi?.data?.length}
+                    </h4>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
+          </div>
+        )}
         {/*
         <Row>
           <Col xs="12">

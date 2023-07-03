@@ -117,41 +117,40 @@ const routes = [
   },
   //TODO generate report
 
-  /*
   {
     collapse: true,
-    name: "Pages",
+    name: "Actions",
     rtlName: "صفحات",
     icon: "tim-icons icon-image-02",
     state: "pagesCollapse",
     views: [
-      {
-        path: "/pricing",
-        name: "Pricing",
-        rtlName: "عالتسعير",
-        mini: "P",
-        rtlMini: "ع",
-        component: <Pricing />,
-        layout: "/auth",
-      },
-      {
-        path: "/rtl-support",
-        name: "RTL Support",
-        rtlName: "صودعم رتل",
-        mini: "RS",
-        rtlMini: "صو",
-        component: <Rtl />,
-        layout: "/rtl",
-      },
-      {
-        path: "/timeline",
-        name: "Timeline",
-        rtlName: "تيالجدول الزمني",
-        mini: "T",
-        rtlMini: "تي",
-        component: <Timeline />,
-        layout: "/admin",
-      },
+      // {
+      //   path: "/pricing",
+      //   name: "Pricing",
+      //   rtlName: "عالتسعير",
+      //   mini: "P",
+      //   rtlMini: "ع",
+      //   component: <Pricing />,
+      //   layout: "/auth",
+      // },
+      // {
+      //   path: "/rtl-support",
+      //   name: "RTL Support",
+      //   rtlName: "صودعم رتل",
+      //   mini: "RS",
+      //   rtlMini: "صو",
+      //   component: <Rtl />,
+      //   layout: "/rtl",
+      // },
+      // {
+      //   path: "/timeline",
+      //   name: "Timeline",
+      //   rtlName: "تيالجدول الزمني",
+      //   mini: "T",
+      //   rtlMini: "تي",
+      //   component: <Timeline />,
+      //   layout: "/admin",
+      // },
       {
         path: "/login",
         name: "Login",
@@ -170,26 +169,28 @@ const routes = [
         component: <Register />,
         layout: "/auth",
       },
-      {
-        path: "/lock-screen",
-        name: "Lock Screen",
-        rtlName: "اقفل الشاشة",
-        mini: "LS",
-        rtlMini: "هذاع",
-        component: <Lock />,
-        layout: "/auth",
-      },
-      {
-        path: "/user-profile",
-        name: "User Profile",
-        rtlName: "ملف تعريفي للمستخدم",
-        mini: "UP",
-        rtlMini: "شع",
-        component: <User />,
-        layout: "/admin",
-      },
+      // {
+      //   path: "/lock-screen",
+      //   name: "Lock Screen",
+      //   rtlName: "اقفل الشاشة",
+      //   mini: "LS",
+      //   rtlMini: "هذاع",
+      //   component: <Lock />,
+      //   layout: "/auth",
+      // },
+      // {
+      //   path: "/user-profile",
+      //   name: "User Profile",
+      //   rtlName: "ملف تعريفي للمستخدم",
+      //   mini: "UP",
+      //   rtlMini: "شع",
+      //   component: <User />,
+      //   layout: "/admin",
+      // },
     ],
   },
+
+  /*
   {
     collapse: true,
     name: "Components",
@@ -422,6 +423,7 @@ const routes = [
     component: <Calendar />,
     layout: "/admin",
   },
+
   */
 ];
 
