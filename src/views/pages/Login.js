@@ -86,12 +86,14 @@ const Login = () => {
     <>
       <div className="content">
         <Container>
-          <Col className="ml-auto mr-auto" lg="4" md="6">
+          <Col className="ml-auto mr-auto" lg="12" md="12">
             <Form className="form">
               <Card className="card-login card-white">
                 <CardHeader>
                   <img alt="..." src={require("assets/img/card-primary.png")} />
-                  <CardTitle tag="h1">Log in</CardTitle>
+                  <CardTitle tag="h1" className="text-dark ml-4 mt-3">
+                    Log in
+                  </CardTitle>
                 </CardHeader>
                 <CardBody>
                   <InputGroup
@@ -99,13 +101,17 @@ const Login = () => {
                       "input-group-focus": state.emailFocus,
                     })}
                   >
-                    <InputGroupAddon addonType="prepend">
+                    {/* <InputGroupAddon addonType="prepend">
                       <InputGroupText>
                         <i className="tim-icons icon-email-85" />
                       </InputGroupText>
-                    </InputGroupAddon>
+                    </InputGroupAddon> */}
                     <Input
-                    style={{color: "black"}}
+                      style={{
+                        color: "black",
+                        background: "white",
+                        border: "2px grey solid",
+                      }}
                       innerRef={emailRef}
                       placeholder="Email"
                       type="text"
@@ -118,12 +124,17 @@ const Login = () => {
                       "input-group-focus": state.passFocus,
                     })}
                   >
-                    <InputGroupAddon addonType="prepend">
+                    {/* <InputGroupAddon addonType="prepend">
                       <InputGroupText>
                         <i className="tim-icons icon-lock-circle" />
                       </InputGroupText>
-                    </InputGroupAddon>
+                    </InputGroupAddon> */}
                     <Input
+                      style={{
+                        color: "black",
+                        background: "white",
+                        border: "2px grey solid",
+                      }}
                       innerRef={passwordRef}
                       placeholder="Password"
                       type="text"

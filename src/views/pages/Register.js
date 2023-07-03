@@ -187,8 +187,16 @@ const Register = () => {
               {/* todo remove button end */}
 
               <Button
-                className="btn-round"
-                color="primary"
+                className={
+                  registrationModeState === registrationMode.admin
+                    ? "btn-round text-dark"
+                    : "btn-round"
+                }
+                color={
+                  registrationModeState === registrationMode.admin
+                    ? "info"
+                    : "primary"
+                }
                 href="#pablo"
                 onClick={(e) => {
                   e.preventDefault();
@@ -199,8 +207,16 @@ const Register = () => {
                 Register as Admin
               </Button>
               <Button
-                className="btn-round"
-                color="primary"
+                className={
+                  registrationModeState === registrationMode.customer
+                    ? "btn-round text-dark"
+                    : "btn-round"
+                }
+                color={
+                  registrationModeState === registrationMode.customer
+                    ? "info"
+                    : "primary"
+                }
                 href="#pablo"
                 onClick={(e) => {
                   e.preventDefault();
@@ -221,7 +237,7 @@ const Register = () => {
                   <CardTitle
                     style={{ color: "white" }}
                     tag="h4"
-                    className="pl-4"
+                    className="ml-4 mt-4x"
                   >
                     Register
                   </CardTitle>

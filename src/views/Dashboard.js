@@ -55,6 +55,9 @@ import {
 import useApi from "hooks/useApi";
 import profileApi from "apiService/profile/profileApi";
 import authApi from "apiService/auth/authApi";
+import deviceApi from "apiService/device/deviceApi";
+import tenantApi from "apiService/tenant/tenantApi";
+import customerApi from "apiService/customer/customerApi";
 
 var mapData = {
   AU: 760,
@@ -73,6 +76,10 @@ var mapData = {
 const Dashboard = () => {
   const getMyProfileApi = useApi(profileApi.myProfile);
   const getMyRoleApi = useApi(authApi.myRole);
+  const getAllDevicesApi = useApi(deviceApi.getAllDevices);
+  const getAllTenantsApi = useApi(tenantApi.getTenants);
+  const getAllCustomersApi = useApi(customerApi.getCustomers);
+  //TODO devices, tenants, customers
 
   const [bigChartData, setbigChartData] = React.useState("data1");
   const setBgChartData = (name) => {
@@ -84,8 +91,15 @@ const Dashboard = () => {
     await getMyRoleApi.request();
   }
 
+  async function setDashboardItems() {
+    const devicesResult = await getAllDevicesApi.request();
+    const tenantsResult = await getAllTenantsApi.request();
+    const customersResult = await getAllCustomersApi.request();
+  }
+
   useEffect(() => {
     setUserDetails();
+    setDashboardItems();
   }, []);
 
   return (
@@ -94,13 +108,76 @@ const Dashboard = () => {
         <h1>
           {getMyProfileApi.loading
             ? "Loading"
-            : `Welcome ${getMyProfileApi?.data?.firstName} ${getMyProfileApi?.data?.lastName}: ${getMyProfileApi?.data?.email}`}
+            : `Welcome ${getMyProfileApi?.data?.firstName} ${getMyProfileApi?.data?.lastName}`}
         </h1>
         <h4>
           {getMyRoleApi.loading
             ? "Loading"
             : `You are logged in as ${getMyRoleApi?.data?.role}`}
         </h4>
+        <br></br>
+        <h2>Your Profile</h2>
+        <h4>
+          {getMyProfileApi.loading ? (
+            "Loading"
+          ) : (
+            <div>
+              <p>{`Email: ${getMyProfileApi?.data?.email}`}</p>
+              <p>{`Contact Number: ${getMyProfileApi?.data?.contactNumber}`}</p>
+              <p>{`Address: ${getMyProfileApi?.data?.address}`}</p>
+              <p>{`City: ${getMyProfileApi?.data?.city}`}</p>
+              <p>{`State: ${getMyProfileApi?.data?.state}`}</p>
+            </div>
+          )}
+        </h4>
+        <br></br>
+        <br></br>
+        <h2>Registration Details</h2>
+        <Row>
+          <Col md="4">
+            <Card>
+              <CardHeader>
+                <h4>Total Devices Registered</h4>
+              </CardHeader>
+              <CardBody>
+                <h4>
+                  {getAllDevicesApi.loading
+                    ? "Loading"
+                    : getAllDevicesApi?.data?.length}
+                </h4>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col md="4">
+            <Card>
+              <CardHeader>
+                <h4>Total Tenants Registered</h4>
+              </CardHeader>
+              <CardBody>
+                <h4>
+                  {getAllTenantsApi.loading
+                    ? "Loading"
+                    : getAllTenantsApi?.data?.length}
+                </h4>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col md="4">
+            <Card>
+              <CardHeader>
+                <h4>Total Customers Registered</h4>
+              </CardHeader>
+              <CardBody>
+                <h4>
+                  {getAllCustomersApi.loading
+                    ? "Loading"
+                    : getAllCustomersApi?.data?.length}
+                </h4>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        {/*
         <Row>
           <Col xs="12">
             <Card className="card-chart">
@@ -1102,6 +1179,7 @@ const Dashboard = () => {
             </Card>
           </Col>
         </Row>
+         */}
       </div>
     </>
   );
