@@ -42,7 +42,7 @@ root.render(
 
       <Route path="/rtl/*" element={<RTLLayout />} />
 
-      <Route path="*" element={<Navigate to="/auth/login/" replace />} />
+      <Route path="/" element={<Navigate to="/auth/login/" replace />} />
     </Routes>
   </BrowserRouter>
 );
