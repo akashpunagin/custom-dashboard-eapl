@@ -87,7 +87,7 @@ const routes = [
 
   {
     collapse: true,
-    name: "Pages",
+    name: "Actions",
     rtlName: "صفحات",
     icon: "tim-icons icon-image-02",
     state: "pagesCollapse",
@@ -126,7 +126,7 @@ const routes = [
         mini: "L",
         rtlMini: "هعذا",
         component: <Login />,
-        layout: "/customer",
+        layout: "/auth",
       },
       {
         path: "/register",
@@ -135,7 +135,7 @@ const routes = [
         mini: "R",
         rtlMini: "صع",
         component: <Register />,
-        layout: "/customer",
+        layout: "/auth",
       },
       // {
       //   path: "/lock-screen",

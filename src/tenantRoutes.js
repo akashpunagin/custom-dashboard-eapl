@@ -109,7 +109,7 @@ const routes = [
         mini: "L",
         rtlMini: "هعذا",
         component: <Login />,
-        layout: "/tenant",
+        layout: "/auth",
       },
       {
         path: "/register",
@@ -118,7 +118,7 @@ const routes = [
         mini: "R",
         rtlMini: "صع",
         component: <Register />,
-        layout: "/tenant",
+        layout: "/auth",
       },
       // {
       //   path: "/lock-screen",
