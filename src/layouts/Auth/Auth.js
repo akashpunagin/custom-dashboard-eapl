@@ -114,12 +114,12 @@ const Pages = (props) => {
           <Footer fluid />
         </div>
       </div>
-      {/* <FixedPlugin
+      <FixedPlugin
         activeColor={activeColor}
         sidebarMini={sidebarMini}
         handleActiveClick={handleActiveClick}
         handleMiniClick={handleMiniClick}
-      /> */}
+      />
     </>
   );
 };

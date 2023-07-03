@@ -45,7 +45,7 @@ const FixedPlugin = (props) => {
           <i className="fa fa-cog fa-2x" />
         </a>
         <ul className="dropdown-menu show">
-          <li className="header-title">SIDEBAR BACKGROUND</li>
+          {/* <li className="header-title">SIDEBAR BACKGROUND</li>
           <li className="adjustments-line">
             <div className="badge-colors text-center">
               <span
@@ -104,8 +104,8 @@ const FixedPlugin = (props) => {
                 }}
               />
             </div>
-          </li>
-          <li className="header-title">SIDEBAR MINI</li>
+          </li> */}
+          {/* <li className="header-title">SIDEBAR MINI</li>
           <li className="adjustments-line">
             <div className="togglebutton switch-sidebar-mini d-flex align-items-center justify-content-center">
               <span className="label-switch">OFF</span>
@@ -118,10 +118,10 @@ const FixedPlugin = (props) => {
               />
               <span className="label-switch ml-n3">ON</span>
             </div>
-          </li>
+          </li> */}
           <li className="adjustments-line">
             <div className="togglebutton switch-change-color mt-3 d-flex align-items-center justify-content-center">
-              <span className="label-switch">LIGHT MODE</span>
+              <span className="label-switch">Light Mode</span>
               <CustomInput
                 type="switch"
                 id="switch-2"
@@ -129,10 +129,11 @@ const FixedPlugin = (props) => {
                 value={darkMode}
                 className="mt-n4"
               />
-              <span className="label-switch ml-n3">DARK MODE</span>
+              <span className="label-switch ml-n3">Dark Mode</span>
             </div>
           </li>
-          <li className="button-container">
+          <li></li>
+          {/* <li className="button-container">
             <Button
               href="https://www.creative-tim.com/product/black-dashboard-pro-react"
               color="primary"
@@ -141,8 +142,8 @@ const FixedPlugin = (props) => {
             >
               Buy now
             </Button>
-          </li>
-          <li className="button-container">
+          </li> */}
+          {/* <li className="button-container">
             <Button
               color="default"
               block
@@ -153,8 +154,8 @@ const FixedPlugin = (props) => {
             >
               <i className="nc-icon nc-paper" /> Documentation
             </Button>
-          </li>
-          <li className="button-container">
+          </li> */}
+          {/* <li className="button-container">
             <Button
               href="https://www.creative-tim.com/product/black-dashboard-react"
               color="info"
@@ -163,7 +164,7 @@ const FixedPlugin = (props) => {
             >
               Get free version
             </Button>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
