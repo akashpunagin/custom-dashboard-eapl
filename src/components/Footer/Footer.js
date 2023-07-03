@@ -27,31 +27,11 @@ const Footer = (props) => {
         <ul className="nav">
           <li className="nav-item">
             <a className="nav-link" href="https://www.creative-tim.com">
-              Creative Tim
-            </a>
-          </li>{" "}
-          <li className="nav-item">
-            <a
-              className="nav-link"
-              href="https://www.creative-tim.com/presentation"
-            >
-              About us
-            </a>
-          </li>{" "}
-          <li className="nav-item">
-            <a className="nav-link" href="https://blog.creative-tim.com">
-              Blog
+              EAPL
             </a>
           </li>
         </ul>
-        <div className="copyright">
-          © {new Date().getFullYear()} made with{" "}
-          <i className="tim-icons icon-heart-2" /> by{" "}
-          <a href="https://www.creative-tim.com/" target="_blank">
-            Creative Tim
-          </a>{" "}
-          for a better web.
-        </div>
+        <div className="copyright">© {new Date().getFullYear()}</div>
       </Container>
     </footer>
   );
