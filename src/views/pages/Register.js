@@ -162,7 +162,7 @@ const Register = () => {
           <Row>
             <Col className="ml-auto" md="3">
               {/* todo remove button start*/}
-              <Button
+              {/* <Button
                 className="btn-round"
                 color="primary"
                 href="#pablo"
@@ -183,8 +183,8 @@ const Register = () => {
                 size="lg"
               >
                 Auto fill
-              </Button>
-              {/* todo remove button end*/}
+              </Button> */}
+              {/* todo remove button end */}
 
               <Button
                 className="btn-round"
@@ -212,20 +212,20 @@ const Register = () => {
               </Button>
             </Col>
             <Col className="mr-auto" md="9">
-              <Card className="card-register card-white">
+              <Card className="card-register card-primary">
                 <CardHeader>
                   {/* <CardImg
                     alt="..."
                     src={require("assets/img/card-primary.png")}
                   /> */}
                   <CardTitle
-                    style={{ color: "grey" }}
+                    style={{ color: "white" }}
                     tag="h4"
                     className="pl-4"
                   >
                     Register
                   </CardTitle>
-                  <h2 style={{ color: "grey" }} className="pl-4">
+                  <h2 style={{ color: "white" }} className="pl-4">
                     {getRegistrationModeLabel(registrationModeState)}
                   </h2>
                 </CardHeader>

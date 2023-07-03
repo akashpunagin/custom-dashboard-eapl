@@ -105,6 +105,7 @@ const Login = () => {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
+                    style={{color: "black"}}
                       innerRef={emailRef}
                       placeholder="Email"
                       type="text"

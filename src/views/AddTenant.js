@@ -117,7 +117,8 @@ const AddTenant = () => {
     <>
       <div className="content">
         {alert}
-        <Button
+        {/* TODO remove if not needed */}
+        {/* <Button
           onClick={(e) => {
             e.preventDefault();
             emailRef.current.value = "akash.punagin@gmail.com";
@@ -133,7 +134,7 @@ const AddTenant = () => {
           }}
         >
           Auto fill
-        </Button>
+        </Button> */}
         <Card>
           <CardHeader>
             <CardTitle tag="h2">Add Tenant</CardTitle>

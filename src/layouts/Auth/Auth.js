@@ -21,8 +21,35 @@ import AuthNavbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footer/Footer.js";
 
 import routes from "adminRoutes";
+import FixedPlugin from "components/FixedPlugin/FixedPlugin";
 
 const Pages = (props) => {
+  const [activeColor, setActiveColor] = React.useState("blue");
+  const [sidebarMini, setSidebarMini] = React.useState(true);
+  const notificationAlertRef = React.useRef(null);
+  const handleActiveClick = (color) => {
+    setActiveColor(color);
+  };
+  const handleMiniClick = () => {
+    let notifyMessage = "Sidebar mini ";
+    if (document.body.classList.contains("sidebar-mini")) {
+      setSidebarMini(false);
+      notifyMessage += "deactivated...";
+    } else {
+      setSidebarMini(true);
+      notifyMessage += "activated...";
+    }
+    let options = {};
+    options = {
+      place: "tr",
+      message: notifyMessage,
+      type: "primary",
+      icon: "tim-icons icon-bell-55",
+      autoDismiss: 7,
+    };
+    notificationAlertRef.current.notificationAlert(options);
+    document.body.classList.toggle("sidebar-mini");
+  };
   React.useEffect(() => {
     document.documentElement.classList.remove("nav-open");
   });
@@ -87,6 +114,12 @@ const Pages = (props) => {
           <Footer fluid />
         </div>
       </div>
+      {/* <FixedPlugin
+        activeColor={activeColor}
+        sidebarMini={sidebarMini}
+        handleActiveClick={handleActiveClick}
+        handleMiniClick={handleMiniClick}
+      /> */}
     </>
   );
 };
