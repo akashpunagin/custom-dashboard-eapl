@@ -33,7 +33,7 @@ import "assets/css/custom.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/">
     <Routes>
       <Route path="/auth/*" element={<AuthLayout />} />
       <Route path="/admin/*" element={<AdminLayout />} />
