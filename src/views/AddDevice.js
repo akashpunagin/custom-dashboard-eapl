@@ -217,28 +217,40 @@ const AddDevice = () => {
                 </Col>
               </Row>
               <Row className="align-items-center mt-4">
-                <Col>{getNumberFormField("Varient", varientRef)}</Col>
-                <Col>{getNumberFormField("hw_ver", hw_verRef)}</Col>
+                <Col md="6">{getNumberFormField("Varient", varientRef)}</Col>
+                <Col md="6">{getNumberFormField("hw_ver", hw_verRef)}</Col>
               </Row>
               <Row className="align-items-center">
-                <Col>{getNumberFormField("fw_ver", fw_verRef)}</Col>
-                <Col>{getNumberFormField("o_logo", o_logoRef)}</Col>
+                <Col md="6">{getNumberFormField("fw_ver", fw_verRef)}</Col>
+                <Col md="6">{getNumberFormField("o_logo", o_logoRef)}</Col>
               </Row>
               <Row className="align-items-center">
-                <Col>{getNumberFormField("o_prod_name", o_prod_nameRef)}</Col>
-                <Col>{getNumberFormField("o_prod_ver", o_prod_verRef)}</Col>
+                <Col md="6">
+                  {getNumberFormField("o_prod_name", o_prod_nameRef)}
+                </Col>
+                <Col md="6">
+                  {getNumberFormField("o_prod_ver", o_prod_verRef)}
+                </Col>
               </Row>
               <Row className="align-items-center">
-                <Col>{getNumberFormField("u_dev_name", u_dev_nameRef)}</Col>
-                <Col>{getNumberFormField("u_comp_name", u_comp_nameRef)}</Col>
+                <Col md="6">
+                  {getNumberFormField("u_dev_name", u_dev_nameRef)}
+                </Col>
+                <Col md="6">
+                  {getNumberFormField("u_comp_name", u_comp_nameRef)}
+                </Col>
               </Row>
               <Row className="align-items-center">
-                <Col>{getNumberFormField("u_tz_diff", u_tz_diffRef)}</Col>
-                <Col>{getNumberFormField("u_lat", u_latRef)}</Col>
+                <Col md="6">
+                  {getNumberFormField("u_tz_diff", u_tz_diffRef)}
+                </Col>
+                <Col md="6">{getNumberFormField("u_lat", u_latRef)}</Col>
               </Row>
               <Row className="align-items-center">
-                <Col>{getNumberFormField("u_long", u_longRef)}</Col>
-                <Col>{getNumberFormField("u_conn_ssid", u_conn_ssidRef)}</Col>
+                <Col md="6">{getNumberFormField("u_long", u_longRef)}</Col>
+                <Col md="6">
+                  {getNumberFormField("u_conn_ssid", u_conn_ssidRef)}
+                </Col>
               </Row>
             </Form>
           </CardBody>
