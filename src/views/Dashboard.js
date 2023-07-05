@@ -97,6 +97,24 @@ const Dashboard = () => {
     const customersResult = await getAllCustomersApi.request();
   }
 
+  function getRegistrationDetailsCard(label, value) {
+    return (
+      <Card
+        style={{
+          border: "3px #1E1E28 solid",
+          "border-radius": "10px",
+        }}
+      >
+        <CardHeader className="text-center">
+          <h4>{label}</h4>
+        </CardHeader>
+        <CardBody className="text-center">
+          <h4>{value}</h4>
+        </CardBody>
+      </Card>
+    );
+  }
+
   useEffect(() => {
     setUserDetails();
     setDashboardItems();
@@ -105,6 +123,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="content">
+        <br></br>
         <h1>
           {getMyProfileApi.loading
             ? "Loading"
@@ -116,20 +135,31 @@ const Dashboard = () => {
             : `You are logged in as ${getMyRoleApi?.data?.role}`}
         </h4>
         <br></br>
-        <h2>Your Profile</h2>
-        <h4>
-          {getMyProfileApi.loading ? (
-            "Loading"
-          ) : (
-            <div>
-              <p>{`Email: ${getMyProfileApi?.data?.email}`}</p>
-              <p>{`Contact Number: ${getMyProfileApi?.data?.contactNumber}`}</p>
-              <p>{`Address: ${getMyProfileApi?.data?.address}`}</p>
-              <p>{`City: ${getMyProfileApi?.data?.city}`}</p>
-              <p>{`State: ${getMyProfileApi?.data?.state}`}</p>
-            </div>
-          )}
-        </h4>
+        <Card
+          style={{
+            border: "3px #1E1E28 solid",
+            "border-radius": "10px",
+          }}
+        >
+          <CardHeader>
+            <h2>Your Profile</h2>
+          </CardHeader>
+          <CardBody>
+            <h4>
+              {getMyProfileApi.loading ? (
+                "Loading"
+              ) : (
+                <div>
+                  <p>{`Email: ${getMyProfileApi?.data?.email}`}</p>
+                  <p>{`Contact Number: ${getMyProfileApi?.data?.contactNumber}`}</p>
+                  <p>{`Address: ${getMyProfileApi?.data?.address}`}</p>
+                  <p>{`City: ${getMyProfileApi?.data?.city}`}</p>
+                  <p>{`State: ${getMyProfileApi?.data?.state}`}</p>
+                </div>
+              )}
+            </h4>
+          </CardBody>
+        </Card>
         {getMyRoleApi?.data?.role === "ADMIN" && (
           <div>
             <br></br>
@@ -137,46 +167,28 @@ const Dashboard = () => {
             <h2>Registration Details</h2>
             <Row>
               <Col md="4">
-                <Card>
-                  <CardHeader>
-                    <h4>Total Devices Registered</h4>
-                  </CardHeader>
-                  <CardBody>
-                    <h4>
-                      {getAllDevicesApi.loading
-                        ? "Loading"
-                        : getAllDevicesApi?.data?.length}
-                    </h4>
-                  </CardBody>
-                </Card>
+                {getRegistrationDetailsCard(
+                  "Total Devices Registered",
+                  getAllDevicesApi.loading
+                    ? "Loading"
+                    : getAllDevicesApi?.data?.length
+                )}
               </Col>
               <Col md="4">
-                <Card>
-                  <CardHeader>
-                    <h4>Total Tenants Registered</h4>
-                  </CardHeader>
-                  <CardBody>
-                    <h4>
-                      {getAllTenantsApi.loading
-                        ? "Loading"
-                        : getAllTenantsApi?.data?.length}
-                    </h4>
-                  </CardBody>
-                </Card>
+                {getRegistrationDetailsCard(
+                  "Total Tenants Registered",
+                  getAllTenantsApi.loading
+                    ? "Loading"
+                    : getAllTenantsApi?.data?.length
+                )}
               </Col>
               <Col md="4">
-                <Card>
-                  <CardHeader>
-                    <h4>Total Customers Registered</h4>
-                  </CardHeader>
-                  <CardBody>
-                    <h4>
-                      {getAllCustomersApi.loading
-                        ? "Loading"
-                        : getAllCustomersApi?.data?.length}
-                    </h4>
-                  </CardBody>
-                </Card>
+                {getRegistrationDetailsCard(
+                  "Total Customers Registered",
+                  getAllCustomersApi.loading
+                    ? "Loading"
+                    : getAllCustomersApi?.data?.length
+                )}
               </Col>
             </Row>
           </div>

@@ -54,41 +54,31 @@ const ShowDevices = () => {
   return (
     <>
       <div className="content">
-        <Card>
-          <CardHeader>
-            <CardTitle tag="h2">All Devices</CardTitle>
-          </CardHeader>
-          <CardBody>
-            {getAllDevicesApi.loading ? "Loading All Devices" : ""}
-            {getAllDevicesApi.data !== null && (
-              <Fragment>
-                <Row>
-                  <Col sm="1">
-                    <p className="text-muted"> </p>
-                  </Col>
-                  <Col>
-                    <p className="text-muted">Device Id</p>
-                  </Col>
-                  <Col>
-                    <p className="text-muted">Client Topic</p>
-                  </Col>
-                  <Col></Col>
-                </Row>
-                <br></br>
-                {getAllDevicesApi.data.map((device, index) => {
-                  return (
+        <h2>All Devices</h2>
+        {getAllDevicesApi.loading ? <h3>{"Loading All Devices"}</h3> : ""}
+        {getAllDevicesApi.data !== null && (
+          <Fragment>
+            <br></br>
+            {getAllDevicesApi.data.map((device, index) => {
+              return (
+                <Card
+                  style={{
+                    border: "3px #1E1E28 solid",
+                    "border-radius": "10px",
+                  }}
+                >
+                  <CardBody>
                     <Fragment key={index}>
                       <Row>
-                        <Col sm="1">
-                          <p className="text-muted">{`${index + 1})`}</p>
+                        <Col md="10">
+                          <h4 className="text-muted">
+                            {`${index + 1})`} Device Id: {device.device_id}
+                          </h4>
+                          <h4 className="text-muted">
+                            Client Topic: {device.client_topic}
+                          </h4>
                         </Col>
-                        <Col>
-                          <p className="text-muted">{device.device_id}</p>
-                        </Col>
-                        <Col>
-                          <p className="text-muted">{device.client_topic}</p>
-                        </Col>
-                        <Col>
+                        <Col md="2">
                           <Button size="sm" color="info">
                             Monitor Sensors
                           </Button>
@@ -96,12 +86,12 @@ const ShowDevices = () => {
                       </Row>
                       <hr></hr>
                     </Fragment>
-                  );
-                })}
-              </Fragment>
-            )}
-          </CardBody>
-        </Card>
+                  </CardBody>
+                </Card>
+              );
+            })}
+          </Fragment>
+        )}
       </div>
     </>
   );

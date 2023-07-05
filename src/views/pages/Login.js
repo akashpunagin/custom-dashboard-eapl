@@ -88,10 +88,16 @@ const Login = () => {
         <Container>
           <Col className="ml-auto mr-auto" lg="12" md="12">
             <Form className="form">
-              <Card className="card-login card-white">
-                <CardHeader>
-                  <img alt="..." src={require("assets/img/card-primary.png")} />
-                  <CardTitle tag="h1" className="ml-4 mt-3">
+              <Card
+                className="card-login card-white"
+                style={{ border: "3px #1E1E28 solid" }}
+              >
+                <CardHeader className="p-4">
+                  {/* <img alt="..." src={require("assets/img/card-primary.png")} /> */}
+                  <CardTitle
+                    tag="h1"
+                    className="mt-3 text-dark text-center text-underline"
+                  >
                     Log in
                   </CardTitle>
                 </CardHeader>

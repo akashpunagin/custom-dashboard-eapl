@@ -68,7 +68,13 @@ const ShowSensors = () => {
     sensorUOM
   ) {
     return (
-      <Card key={index}>
+      <Card
+        key={index}
+        style={{
+          border: "3px #1E1E28 solid",
+          "border-radius": "10px",
+        }}
+      >
         <CardHeader>
           <CardTitle tag="h4">
             {`${index + 1})`} {sensorName}

@@ -14,7 +14,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Button, CustomInput } from "reactstrap";
 
@@ -32,6 +32,11 @@ const FixedPlugin = (props) => {
     setDarkMode(!darkMode);
     document.body.classList.toggle("white-content");
   };
+
+  useEffect(() => {
+    props.handleMiniClick();
+    handleActiveMode();
+  }, []);
   return (
     <div className="fixed-plugin">
       <div className={classes}>
