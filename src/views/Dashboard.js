@@ -108,8 +108,23 @@ const Dashboard = () => {
         <CardHeader className="text-center">
           <h4>{label}</h4>
         </CardHeader>
-        <CardBody className="text-center">
-          <h4>{value}</h4>
+        <CardBody>
+          <div
+            style={{
+              margin: "auto",
+              "border-radius": "50%",
+              width: "50px",
+              height: "50px",
+              padding: "10px",
+              background: "#fff",
+              border: "3px solid #000",
+              color: "#000",
+              "text-align": "center",
+              "font-size": "20px",
+            }}
+          >
+            {value}
+          </div>
         </CardBody>
       </Card>
     );
@@ -142,7 +157,7 @@ const Dashboard = () => {
           }}
         >
           <CardHeader>
-            <h2>Your Profile</h2>
+            <h2 className="text-underline">Your Profile</h2>
           </CardHeader>
           <CardBody>
             <h4>
