@@ -34,8 +34,11 @@ const FixedPlugin = (props) => {
   };
 
   useEffect(() => {
-    props.handleMiniClick();
-    handleActiveMode();
+    try {
+      props.handleMiniClick();
+    } catch (error) {
+      console.log("ERROR IN FIXED PLUGIN:", error);
+    }
   }, []);
   return (
     <div className="fixed-plugin">

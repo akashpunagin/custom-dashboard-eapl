@@ -137,7 +137,7 @@ const AddTenant = () => {
         </Button> */}
         <Card>
           <CardHeader>
-            <CardTitle tag="h2">Add Tenant</CardTitle>
+            <h2>Add Tenant</h2>
           </CardHeader>
           <CardBody>
             <Form className="form">

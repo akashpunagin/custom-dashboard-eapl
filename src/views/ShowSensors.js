@@ -134,7 +134,8 @@ const ShowSensors = () => {
     <>
       <div className="content">
         {alert}
-        <CardTitle tag="h2">Show Sensors of Device</CardTitle>
+        <br></br>
+        <h2>Show Sensors of Device</h2>
         <Row>
           <Col md="8">
             <Select

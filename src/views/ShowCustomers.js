@@ -103,7 +103,8 @@ const ShowCustomers = () => {
   return (
     <>
       <div className="content">
-        <CardTitle tag="h2">All Customers</CardTitle>
+        <br></br>
+        <h2>All Customers</h2>
         {getAllCustomersApi.loading ? "Loading all customers" : ""}
         {getAllCustomersApi.data &&
           getAllCustomersApi.data.map((customer, index) => {

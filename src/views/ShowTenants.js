@@ -103,7 +103,9 @@ const ShowTenants = () => {
   return (
     <>
       <div className="content">
-        <CardTitle tag="h2">All Tenants</CardTitle>
+        {/* <CardTitle tag="h2">All Tenants</CardTitle> */}
+        <br></br>
+        <h2>All Tenants</h2>
         {getAllTenantsApi.loading ? "Loading all tenants" : ""}
         {getAllTenantsApi.data &&
           getAllTenantsApi.data.map((tenant, index) => {

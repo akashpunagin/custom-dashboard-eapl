@@ -151,7 +151,7 @@ const AddSensor = () => {
         {alert}
         <Card>
           <CardHeader>
-            <CardTitle tag="h2">Add Sensors</CardTitle>
+            <h2>Add Sensors</h2>
           </CardHeader>
           <CardBody>
             {existingSensors?.length === 0 ? (

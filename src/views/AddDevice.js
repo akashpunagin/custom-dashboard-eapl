@@ -178,7 +178,7 @@ const AddDevice = () => {
         {alert}
         <Card>
           <CardHeader>
-            <CardTitle tag="h4">Add Device Form</CardTitle>
+            <h2>Add Device Form</h2>
           </CardHeader>
           <CardBody>
             <Form className="form-horizontal">

@@ -54,6 +54,7 @@ const ShowDevices = () => {
   return (
     <>
       <div className="content">
+        <br></br>
         <h2>All Devices</h2>
         {getAllDevicesApi.loading ? <h3>{"Loading All Devices"}</h3> : ""}
         {getAllDevicesApi.data !== null && (
@@ -74,7 +75,7 @@ const ShowDevices = () => {
                           <h4 className="text-muted">
                             {`${index + 1})`} Device Id: {device.device_id}
                           </h4>
-                          <h4 className="text-muted">
+                          <h4 className="text-muted pl-3">
                             Client Topic: {device.client_topic}
                           </h4>
                         </Col>
