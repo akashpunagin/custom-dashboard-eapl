@@ -34,7 +34,7 @@ import logo from "assets/img/react-logo.png";
 var ps;
 
 const Tenant = (props) => {
-  const [activeColor, setActiveColor] = React.useState("blue");
+  const [activeColor, setActiveColor] = React.useState("primary");
   const [sidebarMini, setSidebarMini] = React.useState(true);
   const [opacity, setOpacity] = React.useState(0);
   const [sidebarOpened, setSidebarOpened] = React.useState(false);

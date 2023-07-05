@@ -75,7 +75,13 @@ const MyTenants = () => {
     address
   ) {
     return (
-      <Card key={index}>
+      <Card
+        key={index}
+        style={{
+          border: "3px #1E1E28 solid",
+          "border-radius": "10px",
+        }}
+      >
         <CardHeader>
           <CardTitle tag="h4">
             {`${index + 1}) `}
@@ -102,8 +108,9 @@ const MyTenants = () => {
   return (
     <>
       <div className="content">
-        <CardTitle tag="h2">My Tenants</CardTitle>
-        {getMyTenantsApi.loading ? "Loading all tenants" : ""}
+        <br></br>
+        <h2>My Tenants</h2>
+        {getMyTenantsApi.loading ? "Loading my tenants" : ""}
         {getMyTenantsApi.data &&
           getMyTenantsApi.data.map((tenant, index) => {
             return getTenantCard(

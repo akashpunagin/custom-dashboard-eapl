@@ -134,7 +134,9 @@ const Sidebar = (props) => {
             {prop.icon !== undefined ? (
               <>
                 <i className={prop.icon} />
-                <p>{rtlActive ? prop.rtlName : prop.name}</p>
+                <p className="text-dark" style={{ "font-size": "16px" }}>
+                  {rtlActive ? prop.rtlName : prop.name}
+                </p>
               </>
             ) : (
               <>

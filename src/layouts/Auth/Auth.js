@@ -24,7 +24,7 @@ import routes from "adminRoutes";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin";
 
 const Pages = (props) => {
-  const [activeColor, setActiveColor] = React.useState("blue");
+  const [activeColor, setActiveColor] = React.useState("primary");
   const [sidebarMini, setSidebarMini] = React.useState(true);
   const notificationAlertRef = React.useRef(null);
   const handleActiveClick = (color) => {
